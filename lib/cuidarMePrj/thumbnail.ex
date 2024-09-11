@@ -16,7 +16,7 @@ defmodule CuidarMePrj.Thumbnail do
     field :inline, :boolean
     field :deleted, :boolean
 
-    belongs_to :photos, Photo
+    belongs_to :photo, Photo
 
   end
 

@@ -2,6 +2,7 @@ defmodule CuidarMePrj.Photo do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias CuidarMePrj.Assignee
   alias CuidarMePrj.Thumbnail
 
   schema "photos" do
@@ -17,6 +18,7 @@ defmodule CuidarMePrj.Photo do
     field :deleted, :boolean
 
     has_many :thumbnails, Thumbnail
+    belongs_to :assignee, Assignee
 
     timestamps(type: :utc_datetime)
   end
