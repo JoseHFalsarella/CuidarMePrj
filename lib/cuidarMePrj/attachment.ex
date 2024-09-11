@@ -1,9 +1,9 @@
-defmodule CuidarMePrj.Thumbnail do
+defmodule CuidarMePrj.Attachment do
+  alias CuidarMePrj.Thumbnail
   use Ecto.Schema
   import Ecto.Changeset
-  alias CuidarMePrj.Photo
 
-  schema "thumbnails" do
+  schema "attachments" do
     field :url, :string
     field :file_name, :string
     field :content_url, :string
@@ -14,13 +14,16 @@ defmodule CuidarMePrj.Thumbnail do
     field :height, :integer
     field :inline, :boolean
     field :deleted, :boolean
+    field :malware_scan_result, :string
 
-    belongs_to :photos, Photo
+    has_many :thumbnails, Thumbnail
+
+    timestamps(type: :utc_datetime)
   end
 
   @doc false
-  def changeset(thumbnail, attrs) do
-    thumbnail
+  def changeset(attachment, attrs) do
+    attachment
     |> cast(attrs, [])
     |> validate_required([])
   end
