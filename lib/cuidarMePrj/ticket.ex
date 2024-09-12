@@ -1,4 +1,10 @@
 defmodule CuidarMePrj.Ticket do
+  alias CuidarMePrj.Comment
+  alias CuidarMePrj.MetricSet
+  alias CuidarMePrj.Groups
+  alias CuidarMePrj.Submitter
+  alias CuidarMePrj.Requester
+  alias CuidarMePrj.Assignee
   alias CuidarMePrj.Field
   alias CuidarMePrj.CustomField
   use Ecto.Schema
@@ -33,6 +39,15 @@ defmodule CuidarMePrj.Ticket do
     field :collaborator_id, :map
     field :recipient, :string
     field :organization, :string
+
+    has_one :assignee, Assignee
+    has_one :requester, Requester
+    has_one :submitter, Submitter
+    has_one :group, Groups
+    has_one :metric_set, MetricSet
+    has_many :custom_fields, CustomField
+    has_many :fields, Field
+    has_many :comments, Comment
 
     timestamps(type: :utc_datetime)
   end

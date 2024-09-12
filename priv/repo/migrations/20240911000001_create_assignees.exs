@@ -1,9 +1,8 @@
-defmodule CuidarMePrj.Repo.Migrations.CreateRequesters do
+defmodule CuidarMePrj.Repo.Migrations.CreateAssignees do
   use Ecto.Migration
 
   def change do
-    create table(:requesters) do
-
+    create table(:assignees) do
       add :url, :string
       add :name, :string
       add :email, :string
@@ -37,12 +36,15 @@ defmodule CuidarMePrj.Repo.Migrations.CreateRequesters do
       add :default_group_id, :integer
       add :report_csv, :boolean
       add :user_fields, :string
+      add :ticket_id, references(:tickets)
+
 
       timestamps(type: :utc_datetime)
     end
 
-    create unique_index(:requesters,[:url])
-    create unique_index(:requesters,[:email])
-    create unique_index(:requesters,[:phone])
+    create unique_index(:assignees,[:url])
+    create unique_index(:assignees,[:email])
+    create unique_index(:assignees,[:phone])
+
   end
 end

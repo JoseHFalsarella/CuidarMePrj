@@ -2,6 +2,7 @@ defmodule CuidarMePrj.Submitter do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias CuidarMePrj.Ticket
   alias CuidarMePrj.Photo
 
   schema "submitters" do
@@ -40,8 +41,8 @@ defmodule CuidarMePrj.Submitter do
       field :report_csv, :boolean
       field :user_fields, :string
 
-      has_one :photos, Photo
-
+      belongs_to :ticket, Ticket
+      has_one :photo, Photo
 
     timestamps(type: :utc_datetime)
   end

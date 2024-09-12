@@ -9,6 +9,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateGroupsTable do
       add :descripton, :string
       add :default, :boolean
       add :deleted, :boolean
+      add :ticket_id, references(:tickets)
 
       timestamps()
     end

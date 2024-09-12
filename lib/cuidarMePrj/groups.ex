@@ -1,4 +1,5 @@
 defmodule CuidarMePrj.Groups do
+  alias CuidarMePrj.Ticket
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -11,6 +12,8 @@ defmodule CuidarMePrj.Groups do
     field :descripton, :string
     field :default, :boolean
     field :deleted, :boolean
+
+    belongs_to :ticket, Ticket
 
     timestamps()
   end

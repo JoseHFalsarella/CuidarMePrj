@@ -1,4 +1,5 @@
 defmodule CuidarMePrj.Comment do
+  alias CuidarMePrj.Ticket
   alias CuidarMePrj.Attachment
   use Ecto.Schema
   import Ecto.Changeset
@@ -11,12 +12,12 @@ defmodule CuidarMePrj.Comment do
     field :plain_body, :string
     field :public, :boolean
     field :audit_id, :integer
-    field :ticket_id, :integer
     field :via, :string
     field :metadata, :string
     field :custom, :string
 
-    has_many :attachments, Attachment
+    belongs_to :ticket, Ticket
+    has_many :attachemtns, Attachment
 
     timestamps(type: :utc_datetime)
   end

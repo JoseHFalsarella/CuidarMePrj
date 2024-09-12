@@ -4,6 +4,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateCustomFields do
   def change do
     create table(:custom_fields) do
       add :value, :text
+      add :ticket_id, references(:tickets)
       timestamps(type: :utc_datetime)
     end
   end

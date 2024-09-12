@@ -1,8 +1,8 @@
-defmodule CuidarMePrj.Repo.Migrations.CreateThumbnails do
+defmodule CuidarMePrj.Repo.Migrations.CreateAttachments do
   use Ecto.Migration
 
   def change do
-    create table(:thumbnails) do
+    create table(:attachments) do
       add :url, :string
       add :file_name, :string
       add :content_url, :string
@@ -13,12 +13,8 @@ defmodule CuidarMePrj.Repo.Migrations.CreateThumbnails do
       add :height, :integer
       add :inline, :boolean
       add :deleted, :boolean
-      add :photo_id, references(:photos)
-      add :attachment_id, references(:attachments)
+      add :malware_scan_result, :string
+      add :comment_id, references(:comments)
     end
-
-    create unique_index(:thumbnails, [:url])
-    create unique_index(:thumbnails, [:content_url])
-    create unique_index(:thumbnails, [:mapped_content_url])
   end
 end

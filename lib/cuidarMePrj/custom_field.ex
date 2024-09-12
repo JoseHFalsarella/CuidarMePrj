@@ -6,6 +6,8 @@ defmodule CuidarMePrj.CustomField do
   schema "custom_fields" do
     field :value, :string
 
+    belongs_to :ticket, Ticket
+
     timestamps(type: :utc_datetime)
   end
 

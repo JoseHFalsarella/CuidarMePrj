@@ -36,6 +36,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateSubmitters do
       add :default_group_id, :integer
       add :report_csv, :boolean
       add :user_fields, :string
+      add :ticket_id, references(:tickets)
 
       timestamps(type: :utc_datetime)
     end

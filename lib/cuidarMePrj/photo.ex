@@ -21,8 +21,8 @@ defmodule CuidarMePrj.Photo do
 
     has_many :thumbnails, Thumbnail
     belongs_to :assignee, Assignee
-    belongs_to :submitter, Submitter
     belongs_to :requester, Requester
+    belongs_to :submitter, Submitter
 
     timestamps(type: :utc_datetime)
   end
