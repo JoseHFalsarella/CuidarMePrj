@@ -13,7 +13,6 @@ defmodule CuidarMePrj.Repo.Migrations.CreateThumbnails do
       add :height, :integer
       add :inline, :boolean
       add :deleted, :boolean
-
       add :photo_id, references(:photos)
       add :attachment_id, references(:attachments)
     end

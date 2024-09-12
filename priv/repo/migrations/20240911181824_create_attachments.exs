@@ -14,6 +14,8 @@ defmodule CuidarMePrj.Repo.Migrations.CreateAttachments do
       add :inline, :boolean
       add :deleted, :boolean
       add :malware_scan_result, :string
+
+      add :comment_id, references(:comments)
     end
   end
 end

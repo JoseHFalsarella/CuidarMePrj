@@ -2,7 +2,7 @@ defmodule CuidarMePrj.Thumbnail do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias CuidarMePrj.Photo
+  alias CuidarMePrj.Attachment
 
   schema "thumbnails" do
     field :url, :string
@@ -16,6 +16,7 @@ defmodule CuidarMePrj.Thumbnail do
     field :inline, :boolean
     field :deleted, :boolean
 
+    belongs_to :attachment, Attachment
     belongs_to :photo, Photo
   end
 

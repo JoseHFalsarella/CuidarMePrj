@@ -1,4 +1,5 @@
 defmodule CuidarMePrj.Attachment do
+  alias CuidarMePrj.Comment
   alias CuidarMePrj.Thumbnail
   use Ecto.Schema
   import Ecto.Changeset
@@ -17,6 +18,7 @@ defmodule CuidarMePrj.Attachment do
     field :malware_scan_result, :string
 
     has_many :thumbnails, Thumbnail
+    belongs_to :comments, Comment
 
     timestamps(type: :utc_datetime)
   end
