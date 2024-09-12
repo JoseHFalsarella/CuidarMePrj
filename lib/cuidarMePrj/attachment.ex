@@ -18,7 +18,7 @@ defmodule CuidarMePrj.Attachment do
     field :malware_scan_result, :string
 
     has_many :thumbnails, Thumbnail
-    belongs_to :comments, Comment
+    belongs_to :comment, Comment
 
     timestamps(type: :utc_datetime)
   end
