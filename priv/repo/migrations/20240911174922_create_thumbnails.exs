@@ -14,7 +14,6 @@ defmodule CuidarMePrj.Repo.Migrations.CreateThumbnails do
       add :inline, :boolean
       add :deleted, :boolean
 
-
       add :attachment_id, references(:attachments)
     end
 
