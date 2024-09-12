@@ -36,7 +36,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateRequesters do
       add :suspended, :boolean
       add :default_group_id, :integer
       add :report_csv, :boolean
-      add :user_fields, :string
+      add :user_fields, :map
       add :ticket_id, references(:tickets)
 
       timestamps(type: :utc_datetime)

@@ -10,9 +10,9 @@ defmodule CuidarMePrj.Repo.Migrations.CreateComments do
       add :plain_body, :text
       add :public, :boolean
       add :audit_id, :integer
-      add :via, :text
-      add :metadata, :text
-      add :custom, :text
+      add :via, :map
+      add :metadata, :map
+      add :custom, :map
       add :ticket_id, references(:tickets)
       timestamps(type: :utc_datetime)
     end

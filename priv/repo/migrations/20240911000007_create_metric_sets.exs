@@ -15,12 +15,12 @@ defmodule CuidarMePrj.Repo.Migrations.CreateMetricSets do
       add :assigned_at, :utc_datetime
       add :solved_at, :utc_datetime
       add :latest_comment_added_at, :utc_datetime
-      add :reply_time_in_minutes, :string
-      add :first_resolution_time_in_minutes, :string
-      add :full_resolution_time_in_minutes , :string
-      add :agent_wait_time_in_minutes, :string
-      add :requester_wait_time_in_minutes, :string
-      add :on_hold_time_in_minutes, :string
+      add :reply_time_in_minutes, :map
+      add :first_resolution_time_in_minutes, :map
+      add :full_resolution_time_in_minutes , :map
+      add :agent_wait_time_in_minutes, :map
+      add :requester_wait_time_in_minutes, :map
+      add :on_hold_time_in_minutes, :map
       add :custom_status_updated_at, :utc_datetime
       add :ticket_id, references(:tickets)
 

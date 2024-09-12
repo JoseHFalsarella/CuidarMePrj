@@ -16,12 +16,12 @@ defmodule CuidarMePrj.MetricSet do
     field :assigned_at, :utc_datetime
     field :solved_at, :utc_datetime
     field :latest_comment_added_at, :utc_datetime
-    field :reply_time_in_minutes, :string
-    field :first_resolution_time_in_minutes, :string
-    field :full_resolution_time_in_minutes , :string
-    field :agent_wait_time_in_minutes, :string
-    field :requester_wait_time_in_minutes, :string
-    field :on_hold_time_in_minutes, :string
+    field :reply_time_in_minutes, :map
+    field :first_resolution_time_in_minutes, :map
+    field :full_resolution_time_in_minutes , :map
+    field :agent_wait_time_in_minutes, :map
+    field :requester_wait_time_in_minutes, :map
+    field :on_hold_time_in_minutes, :map
     field :custom_status_updated_at, :utc_datetime
 
     belongs_to :ticket, Ticket

@@ -40,7 +40,7 @@ defmodule CuidarMePrj.Assignee do
       field :suspended, :boolean
       field :default_group_id, :integer
       field :report_csv, :boolean
-      field :user_fields, :string
+      field :user_fields, :map
 
       belongs_to :ticket, Ticket
       has_one :photo, Photo

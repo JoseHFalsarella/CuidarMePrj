@@ -12,9 +12,9 @@ defmodule CuidarMePrj.Comment do
     field :plain_body, :string
     field :public, :boolean
     field :audit_id, :integer
-    field :via, :string
-    field :metadata, :string
-    field :custom, :string
+    field :via, :map
+    field :metadata, :map
+    field :custom, :map
 
     belongs_to :ticket, Ticket
     has_many :attachemtns, Attachment
