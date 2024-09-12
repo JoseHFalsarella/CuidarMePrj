@@ -15,6 +15,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreatePhotos do
       add :deleted, :boolean
 
       add :assignee_id, references(:assignees)
+      add :submitter_id, references(:submitters)
 
     end
     create unique_index(:photos,[:url])

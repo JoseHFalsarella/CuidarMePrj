@@ -2,6 +2,8 @@ defmodule CuidarMePrj.Photo do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias CuidarMePrj.Requester
+  alias CuidarMePrj.Submitter
   alias CuidarMePrj.Assignee
   alias CuidarMePrj.Thumbnail
 
@@ -19,6 +21,8 @@ defmodule CuidarMePrj.Photo do
 
     has_many :thumbnails, Thumbnail
     belongs_to :assignee, Assignee
+    belongs_to :submitter, Submitter
+    belongs_to :requester, Requester
 
     timestamps(type: :utc_datetime)
   end
