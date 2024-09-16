@@ -12,6 +12,7 @@ defmodule CuidarMePrj.Groups do
     field :description, :string
     field :default, :boolean
     field :deleted, :boolean
+    field :created_at, :utc_datetime
 
     belongs_to :ticket, Ticket
 

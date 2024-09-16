@@ -13,6 +13,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateComments do
       add :via, :map
       add :metadata, :map
       add :custom, :map
+      add :created_at, :utc_datetime
       add :ticket_id, references(:tickets)
       timestamps(type: :utc_datetime)
     end

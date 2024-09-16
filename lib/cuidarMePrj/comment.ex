@@ -15,9 +15,10 @@ defmodule CuidarMePrj.Comment do
     field :via, :map
     field :metadata, :map
     field :custom, :map
+    field :created_at, :utc_datetime
 
     belongs_to :ticket, Ticket
-    has_many :attachemtns, Attachment
+    has_many :attachments, Attachment
 
     timestamps(type: :utc_datetime)
   end

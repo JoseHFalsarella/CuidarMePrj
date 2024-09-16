@@ -11,7 +11,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateAssignees do
       add :phone, :string
       add :shared_phone_nuber, :boolean
       add :locale_id, :integer
-      add :locate, :string
+      add :locale, :string
       add :organization_id, :integer
       add :role, :string
       add :verified, :boolean
@@ -22,7 +22,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateAssignees do
       add :shared, :boolean
       add :shared_agent, :boolean
       add :last_login_at, :utc_datetime
-      add :two_factor_auth, :boolean
+      add :two_factor_auth_enabled, :boolean
       add :signature, :string
       add :details, :string
       add :notes, :string
@@ -36,6 +36,8 @@ defmodule CuidarMePrj.Repo.Migrations.CreateAssignees do
       add :default_group_id, :integer
       add :report_csv, :boolean
       add :user_fields, :map
+      add :created_at, :utc_datetime
+      add :shared_phone_number, :boolean
       add :ticket_id, references(:tickets)
 
 

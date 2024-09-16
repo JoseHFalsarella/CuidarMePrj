@@ -22,6 +22,8 @@ defmodule CuidarMePrj.Repo.Migrations.CreateMetricSets do
       add :requester_wait_time_in_minutes, :map
       add :on_hold_time_in_minutes, :map
       add :custom_status_updated_at, :utc_datetime
+      add :replies, :integer
+      add :created_at, :utc_datetime
       add :ticket_id, references(:tickets)
 
       timestamps(type: :utc_datetime)

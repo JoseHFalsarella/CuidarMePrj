@@ -23,6 +23,8 @@ defmodule CuidarMePrj.MetricSet do
     field :requester_wait_time_in_minutes, :map
     field :on_hold_time_in_minutes, :map
     field :custom_status_updated_at, :utc_datetime
+    field :replies, :integer
+    field :created_at, :utc_datetime
 
     belongs_to :ticket, Ticket
 

@@ -6,7 +6,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateTickets do
       add :url, :string
       add :external_id, :string
       add :via, :map
-      add :generated_timestamp, :utc_datetime
+      add :generated_timestamp, :naive_datetime
       add :type, :string
       add :subject, :string
       add :raw_subject, :string
@@ -18,7 +18,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateTickets do
       add :is_public, :boolean
       add :due_at, :utc_datetime
       add :created_at, :utc_datetime
-      add :tags, :string
+      add :tags, {:array, :binary}
       add :satisfaction_rating, :integer
       add :sharing_agreement_ids, :map
       add :custom_status_id, :integer
