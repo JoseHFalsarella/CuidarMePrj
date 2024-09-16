@@ -3,13 +3,13 @@ defmodule CuidarMePrj.Groups do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @field [:url, :name, :is_public, :descripton, :default, :deleted]
+  @field [:url, :name, :is_public, :description, :default, :deleted]
 
   schema "groups" do
     field :url, :string
     field :name, :string
     field :is_public, :boolean
-    field :descripton, :string
+    field :description, :string
     field :default, :boolean
     field :deleted, :boolean
 

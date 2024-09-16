@@ -6,7 +6,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateGroupsTable do
       add :url, :string
       add :name, :string
       add :is_public, :boolean
-      add :descripton, :string
+      add :description, :string
       add :default, :boolean
       add :deleted, :boolean
       add :ticket_id, references(:tickets)
