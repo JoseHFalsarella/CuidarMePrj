@@ -1,4 +1,6 @@
 defmodule CuidarMePrj.Ticket do
+
+  alias CuidarMePrj.Collaborator
   alias CuidarMePrj.Comment
   alias CuidarMePrj.MetricSet
   alias CuidarMePrj.Groups
@@ -25,6 +27,7 @@ defmodule CuidarMePrj.Ticket do
     field :has_incidents, :boolean
     field :is_public, :boolean
     field :due_at, :utc_datetime
+    field :created_at, :utc_datetime
     field :tags, :string
     field :satisfaction_rating, :integer
     field :sharing_agreement_ids, :map
@@ -36,9 +39,11 @@ defmodule CuidarMePrj.Ticket do
     field :allow_channelback, :boolean
     field :allow_attachments, :boolean
     field :from_messaging_channel, :boolean
-    field :collaborator_id, :map
     field :recipient, :string
     field :organization, :string
+    field :priority, :string
+    field :description, :string
+    field :status, :string
 
     has_one :assignee, Assignee
     has_one :requester, Requester
@@ -48,6 +53,7 @@ defmodule CuidarMePrj.Ticket do
     has_many :custom_fields, CustomField
     has_many :fields, Field
     has_many :comments, Comment
+    has_many :collaborators, Collaborator
 
     timestamps(type: :utc_datetime)
   end

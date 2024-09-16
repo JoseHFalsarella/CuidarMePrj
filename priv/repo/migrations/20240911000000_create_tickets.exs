@@ -17,6 +17,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateTickets do
       add :has_incidents, :boolean
       add :is_public, :boolean
       add :due_at, :utc_datetime
+      add :created_at, :utc_datetime
       add :tags, :string
       add :satisfaction_rating, :integer
       add :sharing_agreement_ids, :map
@@ -28,9 +29,11 @@ defmodule CuidarMePrj.Repo.Migrations.CreateTickets do
       add :allow_channelback, :boolean
       add :allow_attachments, :boolean
       add :from_messaging_channel, :boolean
-      add :collaborator_id, :map
       add :recipient, :string
       add :organization, :string
+      add :priority, :string
+      add :description, :text
+      add :status, :string
       timestamps(type: :utc_datetime)
     end
 

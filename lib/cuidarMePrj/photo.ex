@@ -2,6 +2,7 @@ defmodule CuidarMePrj.Photo do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias CuidarMePrj.Collaborator
   alias CuidarMePrj.Requester
   alias CuidarMePrj.Submitter
   alias CuidarMePrj.Assignee
@@ -23,6 +24,7 @@ defmodule CuidarMePrj.Photo do
     belongs_to :assignee, Assignee
     belongs_to :requester, Requester
     belongs_to :submitter, Submitter
+    belongs_to :collaborator, Collaborator
 
     timestamps(type: :utc_datetime)
   end
