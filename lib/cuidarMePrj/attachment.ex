@@ -16,6 +16,7 @@ defmodule CuidarMePrj.Attachment do
     field :inline, :boolean
     field :deleted, :boolean
     field :malware_scan_result, :string
+    field :malware_access_override, :string
 
     has_many :thumbnails, Thumbnail
     belongs_to :comment, Comment

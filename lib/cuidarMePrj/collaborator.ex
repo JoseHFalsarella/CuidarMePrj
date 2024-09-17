@@ -14,9 +14,9 @@ defmodule CuidarMePrj.Collaborator do
     field :time_zone, :string
     field :iana_time_zone, :string
     field :phone, :string
-    field :shared_phone_nuber, :boolean
+    field :shared_phone_number, :boolean
     field :locale_id, :integer
-    field :locate, :string
+    field :locale, :string
     field :organization_id, :integer
     field :role, :string
     field :verified, :boolean
@@ -27,7 +27,7 @@ defmodule CuidarMePrj.Collaborator do
     field :shared, :boolean
     field :shared_agent, :boolean
     field :last_login_at, :utc_datetime
-    field :two_factor_auth, :boolean
+    field :two_factor_auth_enabled, :boolean
     field :signature, :string
     field :details, :string
     field :notes, :string
@@ -41,6 +41,7 @@ defmodule CuidarMePrj.Collaborator do
     field :default_group_id, :integer
     field :report_csv, :boolean
     field :user_fields, :map
+    field :created_at, :utc_datetime
 
     belongs_to :ticket, Ticket
     has_one :photo, Photo

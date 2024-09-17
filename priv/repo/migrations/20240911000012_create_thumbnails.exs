@@ -14,6 +14,8 @@ defmodule CuidarMePrj.Repo.Migrations.CreateThumbnails do
       add :inline, :boolean
       add :deleted, :boolean
       add :attachment_id, references(:attachments)
+      add :malware_access_override, :string
+      add :malware_scan_result, :string
       add :photo_id, references(:photos)
     end
 

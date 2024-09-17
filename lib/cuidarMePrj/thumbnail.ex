@@ -16,6 +16,8 @@ defmodule CuidarMePrj.Thumbnail do
     field :height, :integer
     field :inline, :boolean
     field :deleted, :boolean
+    field :malware_access_override, :string
+    field :malware_scan_result, :string
 
     belongs_to :attachment, Attachment
     belongs_to :photo, Photo

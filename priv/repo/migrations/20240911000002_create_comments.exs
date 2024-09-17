@@ -4,12 +4,12 @@ defmodule CuidarMePrj.Repo.Migrations.CreateComments do
   def change do
     create table(:comments) do
       add :type, :string
-      add :author_id, :integer
+      add :author_id, :bigint
       add :body, :text
       add :html_body, :text
       add :plain_body, :text
       add :public, :boolean
-      add :audit_id, :integer
+      add :audit_id, :bigint
       add :via, :map
       add :metadata, :map
       add :custom, :map

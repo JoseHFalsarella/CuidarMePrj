@@ -3,7 +3,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateFields do
 
   def change do
     create table(:fields) do
-      add :value, :text
+      add :value, :string
       add :ticket_id, references(:tickets)
       timestamps(type: :utc_datetime)
     end

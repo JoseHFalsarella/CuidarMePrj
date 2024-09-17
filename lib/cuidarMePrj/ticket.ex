@@ -16,7 +16,7 @@ defmodule CuidarMePrj.Ticket do
     field :url, :string
     field :external_id, :string
     field :via, :map
-    field :generated_timestamp, :integer
+    field :generated_timestamp, :utc_datetime
     field :type, :string
     field :subject, :string
     field :raw_subject, :string
@@ -49,7 +49,7 @@ defmodule CuidarMePrj.Ticket do
     has_one :requester, Requester
     has_one :submitter, Submitter
     has_one :group, Groups
-    has_one :metric_set, MetricSet
+    has_many :metric_set, MetricSet
     has_many :custom_fields, CustomField
     has_many :fields, Field
     has_many :comments, Comment

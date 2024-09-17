@@ -11,12 +11,12 @@ defmodule CuidarMePrj.Repo.Migrations.CreateRequesters do
       add :iana_time_zone, :string
       add :phone, :string
       add :shared_phone_nuber, :boolean
-      add :locale_id, :integer
+      add :locale_id, :bigint
       add :locale, :string
-      add :organization_id, :integer
+      add :organization_id, :bigint
       add :role, :string
       add :verified, :boolean
-      add :external_id, :integer
+      add :external_id, :bigint
       add :tags, :string
       add :alias, :string
       add :active, :boolean
@@ -28,13 +28,13 @@ defmodule CuidarMePrj.Repo.Migrations.CreateRequesters do
       add :details, :string
       add :notes, :string
       add :role_type, :integer
-      add :custom_role_id, :integer
+      add :custom_role_id, :bigint
       add :moderator, :boolean
       add :ticket_restriction, :string
       add :only_private_comments, :boolean
       add :restricted_agent, :boolean
       add :suspended, :boolean
-      add :default_group_id, :integer
+      add :default_group_id, :bigint
       add :report_csv, :boolean
       add :user_fields, :map
       add :created_at, :utc_datetime
