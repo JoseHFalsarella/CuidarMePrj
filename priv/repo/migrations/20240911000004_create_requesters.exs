@@ -16,8 +16,8 @@ defmodule CuidarMePrj.Repo.Migrations.CreateRequesters do
       add :organization_id, :bigint
       add :role, :string
       add :verified, :boolean
-      add :external_id, :bigint
-      add :tags, :string
+      add :external_id, :string
+      add :tags, {:array, :binary}
       add :alias, :string
       add :active, :boolean
       add :shared, :boolean

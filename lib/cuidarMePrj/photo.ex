@@ -33,6 +33,7 @@ defmodule CuidarMePrj.Photo do
   def changeset(photo, attrs) do
     photo
     |> cast(attrs, [])
+    |> cast_assoc(:thumbnails)
     |> validate_required([])
   end
 end

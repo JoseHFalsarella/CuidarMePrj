@@ -20,8 +20,8 @@ defmodule CuidarMePrj.Collaborator do
     field :organization_id, :integer
     field :role, :string
     field :verified, :boolean
-    field :external_id, :integer
-    field :tags, :string
+    field :external_id, :string
+    field :tags, {:array, :binary}
     field :alias, :string
     field :active, :boolean
     field :shared, :boolean
@@ -52,8 +52,11 @@ defmodule CuidarMePrj.Collaborator do
 
   @doc false
   def changeset(collaborator, attrs) do
+    fields = __MODULE__.__schema__(:fields)
     collaborator
-    |> cast(attrs, [])
+    |> cast(attrs, fields)
+    |> cast(attrs, [:tags], default: [])
+    |> cast_assoc(:photo)
     |> validate_required([])
   end
 end

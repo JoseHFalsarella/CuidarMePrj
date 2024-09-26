@@ -28,6 +28,7 @@ defmodule CuidarMePrj.Attachment do
   def changeset(attachment, attrs) do
     attachment
     |> cast(attrs, [])
+    |> cast_assoc(:thumbnails)
     |> validate_required([])
   end
 end

@@ -3,6 +3,8 @@ defmodule CuidarMePrj.MetricSet do
   use Ecto.Schema
   import Ecto.Changeset
 
+
+
   schema "metric_sets" do
 
     field :url, :string
@@ -33,8 +35,9 @@ defmodule CuidarMePrj.MetricSet do
 
   @doc false
   def changeset(metric_set, attrs) do
+    fields = CuidarMePrj.MetricSet.__schema__(:fields)
     metric_set
-    |> cast(attrs, [])
+    |> cast(attrs, fields)
     |> validate_required([])
   end
 end

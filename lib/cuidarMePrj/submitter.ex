@@ -19,8 +19,8 @@ defmodule CuidarMePrj.Submitter do
     field :organization_id, :integer
     field :role, :string
     field :verified, :boolean
-    field :external_id, :integer
-    field :tags, :string
+    field :external_id, :string
+    field :tags, {:array, :binary}
     field :alias, :string
     field :active, :boolean
     field :shared, :boolean
@@ -51,8 +51,11 @@ defmodule CuidarMePrj.Submitter do
 
   @doc false
   def changeset(submitter, attrs) do
+    fields = __MODULE__.__schema__(:fields)
     submitter
-    |> cast(attrs, [])
+    |> cast(attrs, fields)
+    |> put_change(:tags, [])
+    |> cast_assoc(:photo)
     |> validate_required([])
   end
 end

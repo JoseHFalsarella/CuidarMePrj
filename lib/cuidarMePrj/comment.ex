@@ -27,6 +27,7 @@ defmodule CuidarMePrj.Comment do
   def changeset(comment, attrs) do
     comment
     |> cast(attrs, [])
+    |> cast_assoc(:attachments)
     |> validate_required([])
   end
 end

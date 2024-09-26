@@ -49,7 +49,7 @@ defmodule CuidarMePrj.Ticket do
     has_one :requester, Requester
     has_one :submitter, Submitter
     has_one :group, Groups
-    has_many :metric_set, MetricSet
+    has_one :metric_set, MetricSet
     has_many :custom_fields, CustomField
     has_many :fields, Field
     has_many :comments, Comment
@@ -60,8 +60,18 @@ defmodule CuidarMePrj.Ticket do
 
   @doc false
   def changeset(ticket, attrs) do
+    fields = __MODULE__.__schema__(:fields)
     ticket
-    |> cast(attrs, [])
+    |> cast(attrs, fields)
+    |> cast_assoc(:metric_set)
+    |> cast_assoc(:assignee)
+    |> cast_assoc(:requester)
+    |> cast_assoc(:submitter)
+    |> cast_assoc(:group)
+    |> cast_assoc(:custom_fields)
+    |> cast_assoc(:fields)
+    |> cast_assoc(:comments)
+    |> cast_assoc(:collaborator)
     |> validate_required([])
   end
 end

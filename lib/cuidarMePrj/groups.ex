@@ -19,10 +19,11 @@ defmodule CuidarMePrj.Groups do
     timestamps()
   end
 
-  def changeset(params) do
-    %__MODULE__{}
-    |> cast(params, @field)
-    |> validate_required(@field)
+  def changeset(group, attrs) do
+    fields = __MODULE__.__schema__(:fields)
+    group
+    |> cast(attrs, fields)
+    |> validate_required([])
   end
 
 end
