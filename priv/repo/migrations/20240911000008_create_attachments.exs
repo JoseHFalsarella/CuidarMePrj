@@ -15,6 +15,8 @@ defmodule CuidarMePrj.Repo.Migrations.CreateAttachments do
       add :deleted, :boolean
       add :malware_scan_result, :string
       add :malware_access_override, :string
+      add :inserted_at, :utc_datetime
+      add :updated_at, :utc_datetime
       add :comment_id, references(:comments)
     end
   end

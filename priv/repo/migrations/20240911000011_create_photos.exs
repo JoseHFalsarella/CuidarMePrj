@@ -13,6 +13,8 @@ defmodule CuidarMePrj.Repo.Migrations.CreatePhotos do
       add :height, :integer
       add :inline, :boolean
       add :deleted, :boolean
+      add :inserted_at, :utc_datetime
+      add :updated_at, :utc_datetime
       add :assignee_id, references(:assignees)
       add :requester_id, references(:requesters)
       add :submitter_id, references(:submitters)
