@@ -17,7 +17,7 @@ defmodule CuidarMePrjWeb.Router do
   scope "/", CuidarMePrjWeb do
     pipe_through :browser
 
-    live "/", HomeLive
+    live "/", LoginLive
   end
 
   # Other scopes may use custom stacks.

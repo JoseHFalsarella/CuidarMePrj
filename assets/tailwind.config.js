@@ -15,11 +15,36 @@ module.exports = {
     extend: {
       colors: {
         brand: "#FD4F00",
+        fundo: '#10C6C6',
+        botao: '#FE7D8A',
+        darkBlue: '#083849'
       }
     },
+    fontFamily:{
+      pop:['Poppins']
+    }
+    
   },
   plugins: [
     require("@tailwindcss/forms"),
+    function ({ addUtilities }) {
+      addUtilities({
+        '.no-spin': {
+          'appearance': 'textfield',
+          '&::-webkit-outer-spin-button': {
+            'appearance': 'none',
+            'margin': '0',
+          },
+          '&::-webkit-inner-spin-button': {
+            'appearance': 'none',
+            'margin': '0',
+          },
+          '&[type="number"]': {
+            '-moz-appearance': 'textfield',
+          },
+        },
+      });
+    },
     // Allows prefixing tailwind classes with LiveView classes to add rules
     // only when LiveView classes are applied, for example:
     //
