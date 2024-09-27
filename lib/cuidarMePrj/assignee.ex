@@ -57,6 +57,8 @@ defmodule CuidarMePrj.Assignee do
     |> cast(attrs, fields)
     |> cast(attrs, [:tags], default: [])
     |> cast_assoc(:photo)
+    |> unique_constraint(:id, name: :assignees_pkey)
+    |> unique_constraint(:phone, name: :assignees_phone_index)
     |> validate_required([])
   end
 end

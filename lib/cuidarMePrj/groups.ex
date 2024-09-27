@@ -3,8 +3,6 @@ defmodule CuidarMePrj.Groups do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @field [:url, :name, :is_public, :description, :default, :deleted]
-
   schema "groups" do
     field :url, :string
     field :name, :string
@@ -23,6 +21,7 @@ defmodule CuidarMePrj.Groups do
     fields = __MODULE__.__schema__(:fields)
     group
     |> cast(attrs, fields)
+    |> unique_constraint(:id, name: :groups_pkey)
     |> validate_required([])
   end
 

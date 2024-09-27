@@ -72,6 +72,7 @@ defmodule CuidarMePrj.Ticket do
     |> cast_assoc(:fields)
     |> cast_assoc(:comments)
     |> cast_assoc(:collaborator)
+    |> unique_constraint(:id, name: :tickets_pkey)
     |> validate_required([])
   end
 end

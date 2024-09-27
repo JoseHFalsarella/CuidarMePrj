@@ -27,6 +27,7 @@ defmodule CuidarMePrj.Thumbnail do
   def changeset(thumbnail, attrs) do
     thumbnail
     |> cast(attrs, [])
+    |> unique_constraint(:id, name: :thumbnails_pkey)
     |> validate_required([])
   end
 end

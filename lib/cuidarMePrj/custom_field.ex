@@ -15,6 +15,7 @@ defmodule CuidarMePrj.CustomField do
   def changeset(custom_field, attrs) do
     custom_field
     |> cast(attrs, [])
+    |> unique_constraint(:id, name: :custom_fields_pkey)
     |> validate_required([])
   end
 end

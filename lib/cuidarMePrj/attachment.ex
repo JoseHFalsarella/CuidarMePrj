@@ -17,11 +17,11 @@ defmodule CuidarMePrj.Attachment do
     field :deleted, :boolean
     field :malware_scan_result, :string
     field :malware_access_override, :string
+    field :inserted_at, :utc_datetime
+    field :updated_at, :utc_datetime
 
     has_many :thumbnails, Thumbnail
     belongs_to :comment, Comment
-
-    timestamps(type: :utc_datetime)
   end
 
   @doc false
@@ -29,6 +29,7 @@ defmodule CuidarMePrj.Attachment do
     attachment
     |> cast(attrs, [])
     |> cast_assoc(:thumbnails)
+    |> unique_constraint(:id, name: :attachments_pkey)
     |> validate_required([])
   end
 end

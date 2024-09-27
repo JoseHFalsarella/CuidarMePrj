@@ -28,6 +28,7 @@ defmodule CuidarMePrj.Comment do
     comment
     |> cast(attrs, [])
     |> cast_assoc(:attachments)
+    |> unique_constraint(:id, name: :comments_pkey)
     |> validate_required([])
   end
 end

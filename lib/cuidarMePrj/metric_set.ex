@@ -38,6 +38,7 @@ defmodule CuidarMePrj.MetricSet do
     fields = CuidarMePrj.MetricSet.__schema__(:fields)
     metric_set
     |> cast(attrs, fields)
+    |> unique_constraint(:id, name: :metric_sets_pkey)
     |> validate_required([])
   end
 end

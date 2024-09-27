@@ -57,6 +57,8 @@ defmodule CuidarMePrj.Collaborator do
     |> cast(attrs, fields)
     |> cast(attrs, [:tags], default: [])
     |> cast_assoc(:photo)
+    |> unique_constraint(:id, name: :collaborators_pkey)
+    |> unique_constraint(:phone, name: :collaborators_phone_index)
     |> validate_required([])
   end
 end

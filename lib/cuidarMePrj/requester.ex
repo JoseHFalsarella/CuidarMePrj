@@ -56,6 +56,8 @@ defmodule CuidarMePrj.Requester do
     |> cast(attrs, fields)
     |> cast(attrs, [:tags], default: [])
     |> cast_assoc(:photo)
+    |> unique_constraint(:id, name: :requesters_pkey)
+    |> unique_constraint(:phone, name: :requesters_phone_index)
     |> validate_required([])
   end
 end
