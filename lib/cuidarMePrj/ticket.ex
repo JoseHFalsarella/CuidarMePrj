@@ -48,12 +48,13 @@ defmodule CuidarMePrj.Ticket do
     has_one :assignee, Assignee
     has_one :requester, Requester
     has_one :submitter, Submitter
-    has_one :group, Groups
     has_one :metric_set, MetricSet
     has_many :custom_fields, CustomField
     has_many :fields, Field
     has_many :comments, Comment
     has_many :collaborator, Collaborator
+
+    belongs_to :group, Groups, on_replace: :update
 
     timestamps(type: :utc_datetime)
   end
@@ -63,15 +64,6 @@ defmodule CuidarMePrj.Ticket do
     fields = __MODULE__.__schema__(:fields)
     ticket
     |> cast(attrs, fields)
-    |> cast_assoc(:metric_set)
-    |> cast_assoc(:assignee)
-    |> cast_assoc(:requester)
-    |> cast_assoc(:submitter)
-    |> cast_assoc(:group)
-    |> cast_assoc(:custom_fields)
-    |> cast_assoc(:fields)
-    |> cast_assoc(:comments)
-    |> cast_assoc(:collaborator)
     |> unique_constraint(:id, name: :tickets_pkey)
     |> validate_required([])
   end

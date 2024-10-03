@@ -12,17 +12,17 @@ defmodule CuidarMePrj.Groups do
     field :deleted, :boolean
     field :created_at, :utc_datetime
 
-    belongs_to :ticket, Ticket
+    has_many :tickets, Ticket
 
     timestamps()
   end
 
   def changeset(group, attrs) do
+    attrs = attrs || %{}
     fields = __MODULE__.__schema__(:fields)
     group
     |> cast(attrs, fields)
     |> unique_constraint(:id, name: :groups_pkey)
     |> validate_required([])
   end
-
 end

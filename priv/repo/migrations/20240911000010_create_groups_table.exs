@@ -10,14 +10,7 @@ defmodule CuidarMePrj.Repo.Migrations.CreateGroupsTable do
       add :default, :boolean
       add :deleted, :boolean
       add :created_at, :utc_datetime
-      add :ticket_id, references(:tickets)
-
       timestamps()
     end
-
-    create unique_index(:groups,[:url])
-
-
-
   end
 end
