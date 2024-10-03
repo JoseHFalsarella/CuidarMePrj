@@ -1,0 +1,119 @@
+<.header/>
+
+<div class=" h-[851px] bg-fundoCinza flex flex-col items-center justify-center pt-8">
+
+    <div class="w-4/5 h-32 bg-zinc-200 rounded-2xl font-pop  ">
+        <h1 class=" p-6 font-semibold">Tickets</h1>
+
+        <div class="flex justify-center items-center ">
+
+            <button class="w-32 h-8 mr-4 rounded-md bg-darkBlue text-white flex items-center  ">
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="size-5 fill-white mx-2">
+                    <path fill-rule="evenodd"
+                        d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z"
+                        clip-rule="evenodd" />
+                    <path
+                        d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z" />
+                </svg>
+
+                Todos
+
+                <div class="w-7 h-4 bg-white mx-2 rounded-sm font-pop font-semibold text-darkBlue">
+                    <p class="text-[11px] text-center">200</p>
+                </div>
+
+            </button>
+
+            <button type="button" class="w-32 h-8 ml-4 rounded-md  text-darkBlue border-2 border-darkBlue flex items-center">
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="size-5 fill-darkBlue mx-2 ">
+                    <path fill-rule="evenodd"
+                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                        clip-rule="evenodd" />
+                </svg>
+
+                Filters
+
+                <div class="w-7 h-4 bg-darkBlue mx-2 rounded-sm font-pop font-semibold text-white">
+                    <p class="text-[11px] text-center">100</p>
+                </div>
+
+            </button>
+
+        </div>
+    </div>
+
+    <div class="w-4/5  h-[700px] bg-white rounded-2xl my-6">
+
+        <label for="search" class="flex items-center ml-10">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6 stroke-darkBlue absolute translate-x-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+
+            <input type="text" id="search"
+                class="block bg-white w-1/3 border rounded-md m-4 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-darkBlue focus:ring-darkBlue focus:ring-1 sm:text-sm font-pop font-semibold text-darkBlue"
+                placeholder="Nome ou CPF">
+
+        </label>
+
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg font-pop m-8">
+            <table class="w-full text-sm text-left rtl:text-right ">
+                <thead class="border border-b-black">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Nome
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Data do ticket
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            CPF
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Telefone
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <.trow/>
+                    <.trow/>
+                    <.trow/>
+                    <.trow/>
+                    <.trow/>
+                    <.trow/>
+                    <.trow/>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex justify-center gap-8">
+            <button class="h-7 w-7 border-2 border-fundoCinza rounded-lg">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+
+            </button>
+
+            <button class="h-7 w-7 border-2 border-fundoCinza rounded-lg">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+
+            </button>
+        </div>
+    </div>
+
+</div>

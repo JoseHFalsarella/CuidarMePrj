@@ -19,7 +19,7 @@ defmodule CuidarMePrjWeb.Router do
 
     live "/", LoginLive
 
-    live "/teste", TestLive
+    live "/tickets", TicketsLive
   end
 
   # Other scopes may use custom stacks.

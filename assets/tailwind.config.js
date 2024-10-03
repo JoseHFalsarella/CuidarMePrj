@@ -17,7 +17,8 @@ module.exports = {
         brand: "#FD4F00",
         fundo: '#10C6C6',
         botao: '#FE7D8A',
-        darkBlue: '#083849'
+        darkBlue: '#083849',
+        fundoCinza: '#C8C8C8'
       }
     },
     fontFamily:{

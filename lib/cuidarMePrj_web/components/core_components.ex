@@ -429,17 +429,75 @@ defmodule CuidarMePrjWeb.CoreComponents do
 
   def header(assigns) do
     ~H"""
-    <header class={[@actions != [] && "flex items-center justify-between gap-6", @class]}>
-      <div>
-        <h1 class="text-lg font-semibold leading-8 text-zinc-800">
-          <%= render_slot(@inner_block) %>
-        </h1>
-        <p :if={@subtitle != []} class="mt-2 text-sm leading-6 text-zinc-600">
-          <%= render_slot(@subtitle) %>
-        </p>
+    <header class="h-32  w-full flex items-center justify-between font-pop font-semibold">
+      <div class="w-96 h-32 ml-9  flex items-center ">
+        <div class="h-16 w-16 rounded-full bg-fundoCinza flex justify-center items-center ml-3">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 40 41"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M33.3334 35.5V32.1667C33.3334 30.3986 32.631 28.7029 31.3808 27.4526C30.1305 26.2024 28.4349 25.5 26.6667 25.5H13.3334C11.5653 25.5 9.86961 26.2024 8.61937 27.4526C7.36913 28.7029 6.66675 30.3986 6.66675 32.1667V35.5M26.6667 12.1667C26.6667 15.8486 23.682 18.8333 20.0001 18.8333C16.3182 18.8333 13.3334 15.8486 13.3334 12.1667C13.3334 8.48477 16.3182 5.5 20.0001 5.5C23.682 5.5 26.6667 8.48477 26.6667 12.1667Z"
+              stroke="#1E1E1E"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <div class="p-4">
+          <p class="mb-2">Nome:</p>
+          <p>Gmail:</p>
+        </div>
       </div>
-      <div class="flex-none"><%= render_slot(@actions) %></div>
+
+      <div class="flex items-center mb-7 mr-9">
+        <img src="https://beneficiarios.cuidar.me/assets/black.292e99da.svg" alt="Logo da cuidar.me" />
+      </div>
+
     </header>
+    """
+  end
+
+  def trow(assigns) do
+    ~H"""
+      <tr class="">
+        <th scope="row" class="px-6 py-4 font-medium">
+          João vitor dias furtado
+        </th>
+        <td class="px-6 py-4">
+          17/06/2005
+        </td>
+        <td class="px-6 py-4">
+          444.444.444-44
+        </td>
+        <td class="px-6 py-4">
+          (19)97426-8228
+        </td>
+        <td class="px-6 py-4 text-right">
+          <button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6 stroke-darkBlue"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+              />
+            </svg>
+          </button>
+        </td>
+      </tr>
+
     """
   end
 
