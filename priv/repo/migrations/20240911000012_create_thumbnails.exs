@@ -18,9 +18,5 @@ defmodule CuidarMePrj.Repo.Migrations.CreateThumbnails do
       add :malware_scan_result, :string
       add :photo_id, references(:photos)
     end
-
-    create unique_index(:thumbnails, [:url])
-    create unique_index(:thumbnails, [:content_url])
-    create unique_index(:thumbnails, [:mapped_content_url])
   end
 end

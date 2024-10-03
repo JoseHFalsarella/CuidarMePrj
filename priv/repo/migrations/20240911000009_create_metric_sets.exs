@@ -28,8 +28,5 @@ defmodule CuidarMePrj.Repo.Migrations.CreateMetricSets do
 
       timestamps(type: :utc_datetime)
     end
-
-    create unique_index(:metric_sets,[:url])
-
   end
 end

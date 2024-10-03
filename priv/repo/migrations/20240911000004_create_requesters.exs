@@ -25,8 +25,8 @@ defmodule CuidarMePrj.Repo.Migrations.CreateRequesters do
       add :last_login_at, :utc_datetime
       add :two_factor_auth_enabled, :boolean
       add :signature, :string
-      add :details, :string
-      add :notes, :string
+      add :details, :text
+      add :notes, :text
       add :role_type, :integer
       add :custom_role_id, :bigint
       add :moderator, :boolean
@@ -42,9 +42,5 @@ defmodule CuidarMePrj.Repo.Migrations.CreateRequesters do
       add :ticket_id, references(:tickets)
       timestamps(type: :utc_datetime)
     end
-
-    create unique_index(:requesters,[:url])
-    create unique_index(:requesters,[:email])
-    create unique_index(:requesters,[:phone])
   end
 end

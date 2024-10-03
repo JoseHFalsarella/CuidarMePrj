@@ -36,7 +36,5 @@ defmodule CuidarMePrj.Repo.Migrations.CreateTickets do
       add :status, :string
       timestamps(type: :utc_datetime)
     end
-
-    create unique_index(:tickets, [:url])
   end
 end

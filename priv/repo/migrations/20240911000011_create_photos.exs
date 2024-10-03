@@ -21,10 +21,5 @@ defmodule CuidarMePrj.Repo.Migrations.CreatePhotos do
       add :collaborator_id, references(:collaborators)
 
     end
-    create unique_index(:photos,[:url])
-    create unique_index(:photos,[:content_url])
-    create unique_index(:photos,[:mapped_content_url])
-
-
   end
 end
