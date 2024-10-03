@@ -51,13 +51,13 @@ defmodule CuidarMePrj.Submitter do
 
   @doc false
   def changeset(submitter, attrs) do
+    attrs = attrs || %{}
     fields = __MODULE__.__schema__(:fields)
     submitter
     |> cast(attrs, fields)
     |> put_change(:tags, [])
     |> cast_assoc(:photo)
     |> unique_constraint(:id, name: :submitters_pkey)
-    |> unique_constraint(:phone, name: :submitters_phone_index)
     |> validate_required([])
   end
 end

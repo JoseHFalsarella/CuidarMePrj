@@ -12,10 +12,11 @@ defmodule CuidarMePrj.Field do
   end
 
   @doc false
-  def changeset(field, attrs) do
-    field
+  def changeset(custom_field, attrs) do
+    attrs = attrs || %{}
+    custom_field
     |> cast(attrs, [])
-    |> unique_constraint(:id, name: :fields_pkey)
+    |> unique_constraint(:id, name: :custom_fields_pkey)
     |> validate_required([])
   end
 end

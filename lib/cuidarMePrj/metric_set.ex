@@ -35,6 +35,7 @@ defmodule CuidarMePrj.MetricSet do
 
   @doc false
   def changeset(metric_set, attrs) do
+    attrs = attrs || %{}
     fields = CuidarMePrj.MetricSet.__schema__(:fields)
     metric_set
     |> cast(attrs, fields)

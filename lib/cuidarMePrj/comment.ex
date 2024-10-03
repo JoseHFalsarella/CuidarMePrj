@@ -25,6 +25,7 @@ defmodule CuidarMePrj.Comment do
 
   @doc false
   def changeset(comment, attrs) do
+    attrs = attrs || %{}
     comment
     |> cast(attrs, [])
     |> cast_assoc(:attachments)

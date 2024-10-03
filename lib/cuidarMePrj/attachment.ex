@@ -26,6 +26,7 @@ defmodule CuidarMePrj.Attachment do
 
   @doc false
   def changeset(attachment, attrs) do
+    attrs = attrs || %{}
     attachment
     |> cast(attrs, [])
     |> cast_assoc(:thumbnails)

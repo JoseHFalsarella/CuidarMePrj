@@ -52,13 +52,23 @@ defmodule CuidarMePrj.Collaborator do
 
   @doc false
   def changeset(collaborator, attrs) do
+    attrs = if is_list(attrs), do: %{}, else: attrs
     fields = __MODULE__.__schema__(:fields)
+    collaborator =
+      case collaborator do
+        [] -> %__MODULE__{}
+        _ -> collaborator
+      end
+    attrs = if is_map(attrs) do
+      attrs
+    else
+      %{}
+    end
     collaborator
     |> cast(attrs, fields)
     |> cast(attrs, [:tags], default: [])
     |> cast_assoc(:photo)
     |> unique_constraint(:id, name: :collaborators_pkey)
-    |> unique_constraint(:phone, name: :collaborators_phone_index)
     |> validate_required([])
   end
 end

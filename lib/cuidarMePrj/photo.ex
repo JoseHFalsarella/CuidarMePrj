@@ -31,6 +31,7 @@ defmodule CuidarMePrj.Photo do
 
   @doc false
   def changeset(photo, attrs) do
+    attrs = attrs || %{}
     photo
     |> cast(attrs, [])
     |> cast_assoc(:thumbnails)

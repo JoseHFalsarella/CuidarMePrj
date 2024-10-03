@@ -51,13 +51,13 @@ defmodule CuidarMePrj.Requester do
 
   @doc false
   def changeset(requester, attrs) do
+    attrs = attrs || %{}
     fields = __MODULE__.__schema__(:fields)
     requester
     |> cast(attrs, fields)
     |> cast(attrs, [:tags], default: [])
     |> cast_assoc(:photo)
     |> unique_constraint(:id, name: :requesters_pkey)
-    |> unique_constraint(:phone, name: :requesters_phone_index)
     |> validate_required([])
   end
 end

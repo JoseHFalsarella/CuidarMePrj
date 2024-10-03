@@ -52,13 +52,13 @@ defmodule CuidarMePrj.Assignee do
 
   @doc false
   def changeset(assignee, attrs) do
+    attrs = attrs || %{}
     fields = __MODULE__.__schema__(:fields)
     assignee
     |> cast(attrs, fields)
     |> cast(attrs, [:tags], default: [])
     |> cast_assoc(:photo)
     |> unique_constraint(:id, name: :assignees_pkey)
-    |> unique_constraint(:phone, name: :assignees_phone_index)
     |> validate_required([])
   end
 end

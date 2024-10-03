@@ -13,6 +13,7 @@ defmodule CuidarMePrj.CustomField do
 
   @doc false
   def changeset(custom_field, attrs) do
+    attrs = attrs || %{}
     custom_field
     |> cast(attrs, [])
     |> unique_constraint(:id, name: :custom_fields_pkey)
