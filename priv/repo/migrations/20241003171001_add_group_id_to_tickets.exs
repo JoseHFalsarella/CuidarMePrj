@@ -3,7 +3,7 @@ defmodule CuidarMePrj.Repo.Migrations.AddGroupIdToTickets do
 
   def change do
     alter table(:tickets) do
-      add :groups_id, references(:groups)
+      add :group_id, references(:groups)
     end
   end
 end

@@ -3,7 +3,7 @@ defmodule CuidarMePrj.Ticket do
   alias CuidarMePrj.Collaborator
   alias CuidarMePrj.Comment
   alias CuidarMePrj.MetricSet
-  alias CuidarMePrj.Groups
+  alias CuidarMePrj.Group
   alias CuidarMePrj.Submitter
   alias CuidarMePrj.Requester
   alias CuidarMePrj.Assignee
@@ -54,7 +54,7 @@ defmodule CuidarMePrj.Ticket do
     has_many :comments, Comment
     has_many :collaborator, Collaborator
 
-    belongs_to :group, Groups, on_replace: :update
+    belongs_to :group, Group, on_replace: :update
 
     timestamps(type: :utc_datetime)
   end
