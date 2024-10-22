@@ -80,6 +80,11 @@ defmodule CuidarMePrjWeb.CoreComponents do
               </div>
               <div id={"#{@id}-content"}>
                 <%= render_slot(@inner_block) %>
+                <div class="ml-7 my-8">
+                    <button phx-click={JS.exec("data-cancel", to: "##{@id}")} class="w-32 h-12 bg-darkBlue flex items-center justify-center border rounded-xl font-pop font-semibold text-white">
+                        Filtrar
+                    </button>
+                </div>
               </div>
             </.focus_wrap>
           </div>
@@ -462,45 +467,6 @@ defmodule CuidarMePrjWeb.CoreComponents do
     </header>
     """
   end
-
-  def trow(assigns) do
-    ~H"""
-      <tr class="">
-        <th scope="row" class="px-6 py-4 font-medium">
-          João vitor dias furtado
-        </th>
-        <td class="px-6 py-4">
-          17/06/2005
-        </td>
-        <td class="px-6 py-4">
-          444.444.444-44
-        </td>
-        <td class="px-6 py-4">
-          (19)97426-8228
-        </td>
-        <td class="px-6 py-4 text-right">
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6 stroke-darkBlue"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-              />
-            </svg>
-          </button>
-        </td>
-      </tr>
-
-    """
-  end
-
   @doc ~S"""
   Renders a table with generic styling.
 
