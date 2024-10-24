@@ -236,7 +236,6 @@ defmodule CuidarMePrjWeb.CoreComponents do
     <button
       type={@type}
       class={[
-        "phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3",
         "text-sm font-semibold leading-6 text-white active:text-white/80",
         @class
       ]}
@@ -315,7 +314,7 @@ defmodule CuidarMePrjWeb.CoreComponents do
 
     ~H"""
     <div phx-feedback-for={@name}>
-      <label class="flex items-center gap-4 text-sm leading-6 text-zinc-600">
+      <label class="flex items-center gap-2 text-sm leading-6 text-zinc-600">
         <input type="hidden" name={@name} value="false" />
         <input
           type="checkbox"
@@ -323,7 +322,7 @@ defmodule CuidarMePrjWeb.CoreComponents do
           name={@name}
           value="true"
           checked={@checked}
-          class="rounded border-zinc-300 text-zinc-900 focus:ring-0"
+          class="rounded border-darkBlue text-darkBlue focus:ring-0"
           {@rest}
         />
         <%= @label %>
@@ -383,7 +382,7 @@ defmodule CuidarMePrjWeb.CoreComponents do
         id={@id}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
-          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
+          "w-[363px] h-12 border rounded-3xl pl-10 border-none drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]  focus:border-black focus:ring-black",
           "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400",
           @errors == [] && "border-zinc-300 focus:border-zinc-400",
           @errors != [] && "border-rose-400 focus:border-rose-400"
@@ -403,7 +402,7 @@ defmodule CuidarMePrjWeb.CoreComponents do
 
   def label(assigns) do
     ~H"""
-    <label for={@for} class="block text-sm font-semibold leading-6 text-zinc-800">
+    <label for={@for} class="block text-base font-pop ml-8 text-darkBlue">
       <%= render_slot(@inner_block) %>
     </label>
     """
