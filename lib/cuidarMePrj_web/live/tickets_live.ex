@@ -179,7 +179,7 @@ defmodule CuidarMePrjWeb.TicketsLive do
 
   defp remover_codigo_pais(tell) do
     if String.starts_with?(tell, "55") do
-      String.slice(tell, 2..-1)
+      String.slice(tell, 2..-1//-1)
     else
       tell
     end

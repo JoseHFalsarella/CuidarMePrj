@@ -60,7 +60,6 @@ defmodule CuidarMePrjWeb.Router do
 
     live_session :require_authenticated_user,
       on_mount: [{CuidarMePrjWeb.UserAuth, :ensure_authenticated}] do
-        
         live "/", TicketsLive
         live "/id", IdLive
       live "/users/settings", UserSettingsLive, :edit
