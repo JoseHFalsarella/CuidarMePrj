@@ -433,7 +433,7 @@ defmodule CuidarMePrjWeb.CoreComponents do
 
   def header(assigns) do
     ~H"""
-    <header class="h-32  w-full flex items-center justify-between font-pop font-semibold">
+    <header class="h-28 bg-white  w-full flex items-center justify-between font-pop font-semibold">
       <div class="w-96 h-32 ml-9  flex items-center ">
         <div class="h-16 w-16 rounded-full bg-fundoCinza flex justify-center items-center ml-3">
           <svg
