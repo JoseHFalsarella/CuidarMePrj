@@ -32,8 +32,9 @@ defmodule CuidarMePrj.Photo do
   @doc false
   def changeset(photo, attrs) do
     attrs = attrs || %{}
+    fields = __MODULE__.__schema__(:fields)
     photo
-    |> cast(attrs, [])
+    |> cast(attrs, fields)
     |> cast_assoc(:thumbnails)
     |> unique_constraint(:id, name: :photos_pkey)
     |> validate_required([])

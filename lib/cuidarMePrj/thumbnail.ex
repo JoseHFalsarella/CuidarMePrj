@@ -26,8 +26,17 @@ defmodule CuidarMePrj.Thumbnail do
   @doc false
   def changeset(thumbnail, attrs) do
     attrs = attrs || %{}
+    fields = __MODULE__.__schema__(:fields)
+
+    updated_attrs = Map.update(attrs, :malware_access_override, "", fn
+      nil -> "nil"
+      false -> "false"
+      true -> "true"
+      other -> to_string(other) |> String.slice(0, 255)
+    end)
+
     thumbnail
-    |> cast(attrs, [])
+    |> cast(updated_attrs, fields)
     |> unique_constraint(:id, name: :thumbnails_pkey)
     |> validate_required([])
   end

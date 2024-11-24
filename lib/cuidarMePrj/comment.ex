@@ -26,8 +26,9 @@ defmodule CuidarMePrj.Comment do
   @doc false
   def changeset(comment, attrs) do
     attrs = attrs || %{}
+    fields = __MODULE__.__schema__(:fields)
     comment
-    |> cast(attrs, [])
+    |> cast(attrs, fields)
     |> cast_assoc(:attachments)
     |> unique_constraint(:id, name: :comments_pkey)
     |> validate_required([])

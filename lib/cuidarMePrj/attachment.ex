@@ -27,8 +27,17 @@ defmodule CuidarMePrj.Attachment do
   @doc false
   def changeset(attachment, attrs) do
     attrs = attrs || %{}
+    fields = __MODULE__.__schema__(:fields)
+
+    updated_attrs = Map.update(attrs, :malware_access_override, "", fn
+      nil -> "nil"
+      false -> "false"
+      true -> "true"
+      other -> to_string(other) |> String.slice(0, 255)
+    end)
+
     attachment
-    |> cast(attrs, [])
+    |> cast(updated_attrs, fields)
     |> cast_assoc(:thumbnails)
     |> unique_constraint(:id, name: :attachments_pkey)
     |> validate_required([])

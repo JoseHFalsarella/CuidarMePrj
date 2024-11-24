@@ -12,11 +12,28 @@ defmodule CuidarMePrj.Field do
   end
 
   @doc false
-  def changeset(custom_field, attrs) do
+  def changeset(field, attrs) do
     attrs = attrs || %{}
-    custom_field
-    |> cast(attrs, [])
-    |> unique_constraint(:id, name: :custom_fields_pkey)
+    fields = __MODULE__.__schema__(:fields)
+
+    updated_attrs = Map.update(attrs, :value, "", fn
+      nil -> "null"
+      false -> "false"
+      true -> "true"
+      list when is_list(list) ->
+        list
+        |> List.first()
+        |> to_string()
+        |> String.slice(0, 255)
+      other ->
+        other
+        |> to_string()
+        |> String.slice(0, 255)
+    end)
+
+    field
+    |> cast(updated_attrs, fields)
+    |> unique_constraint(:id, name: :fields_pkey)
     |> validate_required([])
   end
 end
