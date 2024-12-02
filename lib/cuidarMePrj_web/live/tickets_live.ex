@@ -2,7 +2,7 @@ defmodule CuidarMePrjWeb.TicketsLive do
   import Ecto.Query
 
   alias CuidarMePrj.Repo
-  alias CuidarMePrj.Requester
+  alias CuidarMePrj.Ticket
   use CuidarMePrjWeb, :live_view
 
   def mount(_params, _session, socket) do
@@ -10,13 +10,13 @@ defmodule CuidarMePrjWeb.TicketsLive do
     page = 1
     per_page = 10
 
-    requesters = top_requesters(search_term, page, per_page)
-    total_tickets = count_requesters(search_term)
+    tickets = top_tickets(search_term, page, per_page)
+    total_tickets = count_tickets(search_term)
     total_filtrados = 0
 
     {:ok,
      socket
-     |> assign(:requesters, requesters)
+     |> assign(:tickets, tickets)
      |> assign(:page, page)
      |> assign(:per_page, per_page)
      |> assign(:total_pages, div(total_tickets + per_page - 1, per_page))
@@ -25,12 +25,21 @@ defmodule CuidarMePrjWeb.TicketsLive do
      |> assign(:search_term, search_term)}
   end
 
-  defp get_requesters(search_term, page, per_page) do
-    query = from(r in Requester, order_by: [asc: r.name])
+  defp get_tickets(search_term, page, per_page) do
+    query = from(t in Ticket,
+      join: r in assoc(t, :requester),
+      preload: [requester: r],
+      order_by: [asc: t.created_at]
+    )
 
     query =
       if search_term != "" do
-        from(r in query, where: like(r.name, ^"%#{search_term}%"))
+        from([t, r] in query,
+          where: like(fragment("to_char(?, '999999')", t.id), ^"%#{search_term}%") or
+                 like(fragment("to_char(?, 'DD/MM/YYYY')", t.created_at), ^"%#{search_term}%") or
+                 like(r.name, ^"%#{search_term}%") or
+                 like(fragment("?->>'cpf'", r.user_fields), ^"%#{search_term}%")
+        )
       else
         query
       end
@@ -41,14 +50,19 @@ defmodule CuidarMePrjWeb.TicketsLive do
     |> Repo.all()
   end
 
-  defp count_requesters(search_term) do
-    query = from(r in Requester)
+  defp count_tickets(search_term) do
+    query = from(t in Ticket,
+      join: r in assoc(t, :requester)
+    )
 
     query =
       if search_term != "" do
-        from(r in query, where: like(r.name, ^"%#{search_term}%"))
-        |> or_where([r], like(r.phone, ^"%#{search_term}%"))
-        |> or_where([r], fragment("?->>'cpf' ILIKE ?", r.user_fields, ^"%#{search_term}%"))
+        from([t, r] in query,
+          where: like(fragment("to_char(?, '999999')", t.id), ^"%#{search_term}%") or
+                 like(fragment("to_char(?, 'DD/MM/YYYY')", t.created_at), ^"%#{search_term}%") or
+                 like(r.name, ^"%#{search_term}%") or
+                 like(fragment("?->>'cpf'", r.user_fields), ^"%#{search_term}%")
+        )
       else
         query
       end
@@ -61,11 +75,11 @@ defmodule CuidarMePrjWeb.TicketsLive do
     per_page = socket.assigns.per_page
     search_term = socket.assigns.search_term
 
-    requesters = top_requesters(search_term, page, per_page)
+    tickets = top_tickets(search_term, page, per_page)
 
     {:noreply,
      socket
-     |> assign(:requesters, requesters)
+     |> assign(:tickets, tickets)
      |> assign(:page, page)}
   end
 
@@ -74,11 +88,11 @@ defmodule CuidarMePrjWeb.TicketsLive do
     per_page = socket.assigns.per_page
     search_term = socket.assigns.search_term
 
-    requesters = top_requesters(search_term, page, per_page)
+    tickets = top_tickets(search_term, page, per_page)
 
     {:noreply,
      socket
-     |> assign(:requesters, requesters)
+     |> assign(:tickets, tickets)
      |> assign(:page, page)}
   end
 
@@ -87,11 +101,11 @@ defmodule CuidarMePrjWeb.TicketsLive do
     per_page = socket.assigns.per_page
     search_term = socket.assigns.search_term
 
-    requesters = top_requesters(search_term, page, per_page)
+    tickets = top_tickets(search_term, page, per_page)
 
     {:noreply,
      socket
-     |> assign(:requesters, requesters)
+     |> assign(:tickets, tickets)
      |> assign(:page, page)}
   end
 
@@ -99,12 +113,12 @@ defmodule CuidarMePrjWeb.TicketsLive do
     page = 1
     per_page = socket.assigns.per_page
 
-    requesters = get_requesters(search_term, page, per_page)
-    total_tickets = count_requesters(search_term)
+    tickets = get_tickets(search_term, page, per_page)
+    total_tickets = count_tickets(search_term)
 
     {:noreply,
      socket
-     |> assign(:requesters, requesters)
+     |> assign(:tickets, tickets)
      |> assign(:page, page)
      |> assign(:total_pages, div(total_tickets + per_page - 1, per_page))
      |> assign(:total_tickets, total_tickets)
@@ -115,12 +129,12 @@ defmodule CuidarMePrjWeb.TicketsLive do
     page = 1
     per_page = socket.assigns.per_page
 
-    requesters = top_requesters(search_term, page, per_page)
-    total_filtrados = count_requesters(search_term)
+    tickets = top_tickets(search_term, page, per_page)
+    total_filtrados = count_tickets(search_term)
 
     {:noreply,
      socket
-     |> assign(:requesters, requesters)
+     |> assign(:tickets, tickets)
      |> assign(:page, page)
      |> assign(:total_filtrados, total_filtrados)
      |> assign(:total_pages, div(total_filtrados + per_page - 1, per_page))
@@ -134,12 +148,12 @@ defmodule CuidarMePrjWeb.TicketsLive do
     per_page = socket.assigns.per_page
     total_filtrados = 0
 
-    requesters = get_requesters(search_term, page, per_page)
-    total_tickets = count_requesters(search_term)
+    tickets = get_tickets(search_term, page, per_page)
+    total_tickets = count_tickets(search_term)
 
     {:noreply,
      socket
-     |> assign(:requesters, requesters)
+     |> assign(:tickets, tickets)
      |> assign(:page, page)
      |> assign(:total_pages, div(total_tickets + per_page - 1, per_page))
      |> assign(:total_tickets, total_tickets)
@@ -147,14 +161,21 @@ defmodule CuidarMePrjWeb.TicketsLive do
      |> assign(:search_term, search_term)}
   end
 
-  defp top_requesters(search_term, page, per_page) do
-    query = from(r in Requester, order_by: [asc: r.name])
+  defp top_tickets(search_term, page, per_page) do
+    query = from(t in Ticket,
+      join: r in assoc(t, :requester),
+      preload: [requester: r],
+      order_by: [asc: t.created_at]
+    )
 
     query =
       if search_term != "" do
-        from(r in query, where: like(r.name, ^"%#{search_term}%"))
-        |> or_where([r], like(r.phone, ^"%#{search_term}%"))
-        |> or_where([r], fragment("?->>'cpf' ILIKE ?", r.user_fields, ^"%#{search_term}%"))
+        from([t, r] in query,
+          where: like(fragment("to_char(?, '999999')", t.id), ^"%#{search_term}%") or
+                 like(fragment("to_char(?, 'DD/MM/YYYY')", t.created_at), ^"%#{search_term}%") or
+                 like(r.name, ^"%#{search_term}%") or
+                 like(fragment("?->>'cpf'", r.user_fields), ^"%#{search_term}%")
+        )
       else
         query
       end
@@ -169,7 +190,7 @@ defmodule CuidarMePrjWeb.TicketsLive do
     Calendar.strftime(date, "%d/%m/%Y")
   end
 
-  def formatar(tell)do
+  def formatar(tell) do
     tell
     |> to_string()
     |> String.replace(~r/\D/, "")
